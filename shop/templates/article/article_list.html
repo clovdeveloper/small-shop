@@ -1,0 +1,11 @@
+<h2>Liste des articles</h2>
+<a href="{% url 'article_create' %}">Ajouter un article</a>
+<ul>
+    {% for article in articles %}
+        <li>
+            {{ article.nom_article }} - {{ article.prix_unitaire }} FBU
+            [<a href="{% url 'article_update' article.pk %}">Modifier</a>]
+            [<a href="{% url 'article_delete' article.pk %}">Supprimer</a>]
+        </li>
+    {% endfor %}
+</ul>

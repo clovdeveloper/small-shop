@@ -1,0 +1,7 @@
+<h2>Supprimer l'article</h2>
+<p>Es-tu sûr de vouloir supprimer "{{ article.nom_article }}" ?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmer</button>
+</form>
+<a href="{% url 'article_list' %}">Annuler</a>

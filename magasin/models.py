@@ -1,4 +1,11 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+
+class AppUser(AbstractUser):
+    telephone = models.CharField(max_length=15)
+    cni = models.CharField(max_length=15)
+    adresse = models.CharField(max_length=50)
+    date_joined = models.DateTimeField(auto_now_add=True)
 
 class Fournisseur(models.Model):
     nom = models.CharField(max_length=45)
@@ -19,13 +26,10 @@ class Client(models.Model):
         return f"{self.prenom} {self.nom}"
 
 class Employe(models.Model):
-    nom = models.CharField(max_length=50)
-    prenom = models.CharField(max_length=50)
-    telephone = models.CharField(max_length=50)
-    adresse = models.CharField(max_length=50)
+    user = models.OneToOneField(AppUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.prenom} {self.nom}"
+        return f"{self.user.first_name} {self.user.last_name}"
 
 class Categorie(models.Model):
     nom = models.CharField(max_length=50)

@@ -1,0 +1,7 @@
+<h2>Ajouter / Modifier un article</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Valider</button>
+</form>
+<a href="{% url 'article_list' %}">Retour à la liste</a>
