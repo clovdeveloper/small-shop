@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Liste des Commandes</h2>
+    <a href="{% url 'commande_create' %}" class="btn btn-success mb-3">Ajouter une Commande</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr><th>Article</th><th>Fournisseur</th><th>Quantité</th><th>Prix</th><th>Date Commande</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+            {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.article.nom_article }}</td>
+                <td>{{ commande.fournisseur }}</td>
+                <td>{{ commande.quantite }}</td>
+                <td>{{ commande.prix }}</td>
+                <td>{{ commande.date_commande|date:'Y-m-d' }}</td>
+                <td>
+                    <a href="{% url 'commande_update' commande.id %}" class="btn btn-primary btn-sm">Modifier</a>
+                    <a href="{% url 'commande_delete' commande.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

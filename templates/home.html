@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}Accueil{% endblock %}
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="mb-4">Bienvenue sur le système de gestion du Magasin</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Employés</h5>
+                    <a href="{% url 'employe_list' %}" class="btn btn-primary">Voir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Clients</h5>
+                    <a href="{% url 'client_list' %}" class="btn btn-primary">Voir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Fournisseurs</h5>
+                    <a href="{% url 'fournisseur_list' %}" class="btn btn-primary">Voir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Catégories</h5>
+                    <a href="{% url 'categorie_list' %}" class="btn btn-primary">Voir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Articles</h5>
+                    <a href="{% url 'article_list' %}" class="btn btn-primary">Voir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Commandes</h5>
+                    <a href="{% url 'commande_list' %}" class="btn btn-primary">Voir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Ventes</h5>
+                    <a href="{% url 'vente_list' %}" class="btn btn-primary">Voir</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

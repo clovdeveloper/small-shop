@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Liste des Articles</h2>
+    <a href="{% url 'article_create' %}" class="btn btn-success mb-3">Ajouter un Article</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr><th>Nom</th><th>Catégorie</th><th>Quantité</th><th>Prix</th><th>Date Fabrication</th><th>Date Expiration</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>{{ article.nom_article }}</td>
+                <td>{{ article.categorie.nom }}</td>
+                <td>{{ article.quantite }}</td>
+                <td>{{ article.prix_unitaire }}</td>
+                <td>{{ article.date_fabrication|date:'Y-m-d' }}</td>
+                <td>{{ article.date_expiration|date:'Y-m-d' }}</td>
+                <td>
+                    <a href="{% url 'article_update' article.id %}" class="btn btn-primary btn-sm">Modifier</a>
+                    <a href="{% url 'article_delete' article.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

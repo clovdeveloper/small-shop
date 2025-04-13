@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Confirmation de suppression{% endblock %}
+{% block content %}
+<h2 class="mb-4">Supprimer {{ object }}</h2>
+<p>Es-tu sûr de vouloir supprimer cet élément ?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirmer</button>
+    <a href="{{ back_url }}" class="btn btn-secondary">Annuler</a>
+</form>
+{% endblock %}

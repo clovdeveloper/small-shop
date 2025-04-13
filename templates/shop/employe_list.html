@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Liste des Employés</h2>
+    <a href="{% url 'employe_create' %}" class="btn btn-success mb-3">Ajouter un Employé</a>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Nom d'utilisateur</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Adresse</th>
+                <th>CNI</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employe in employes %}
+            <tr>
+                <td>{{ employe.user.last_name }}</td>
+                <td>{{ employe.user.first_name }}</td>
+                <td>{{ employe.user.username }}</td>
+                <td>{{ employe.user.email }}</td>
+                <td>{{ employe.user.telephone }}</td>
+                <td>{{ employe.user.adresse }}</td>
+                <td>{{ employe.user.cni }}</td>
+                <td>
+                    <a href="{% url 'employe_update' employe.id %}" class="btn btn-primary btn-sm">Modifier</a>
+                    <a href="{% url 'employe_delete' employe.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
