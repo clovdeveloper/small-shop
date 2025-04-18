@@ -75,12 +75,15 @@ WSGI_APPLICATION = 'magasin.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "shop",  # Your database name
+        "USER": "root",  # MySQL root user
+        "PASSWORD": "",  # Replace with your MySQL password
+        "HOST": "localhost",  # Change if using a remote database
+        "PORT": "3306",  # Default MySQL port
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
