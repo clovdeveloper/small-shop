@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Accès Refusé{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h3 class="mb-0">Accès Refusé</h3>
+                </div>
+                <div class="card-body text-center">
+                    <div class="mb-4">
+                        <i class="fas fa-exclamation-triangle text-danger" style="font-size: 4rem;"></i>
+                    </div>
+                    <h4 class="mb-3">Vous n'avez pas les permissions nécessaires pour accéder à cette page.</h4>
+                    <p class="mb-4">Veuillez contacter l'administrateur si vous pensez que c'est une erreur.</p>
+                    <a href="{% url 'home' %}" class="btn btn-primary">Retour à l'accueil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
