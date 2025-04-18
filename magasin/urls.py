@@ -2,11 +2,11 @@ from django.contrib import admin
 from django.urls import path
 
 from shop import views
-from shop.views import home
+from shop.views import home, login_view, logout_view, admin_dashboard, unauthorized
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-path('', home, name='home'),
+path('/home', home, name='home'),
     path('articles/', views.article_list, name='article_list'),
     path('articles/create/', views.article_create, name='article_create'),
     path('articles/<int:pk>/update/', views.article_update, name='article_update'),
@@ -41,5 +41,19 @@ path('', home, name='home'),
     path('employes/create/', views.employe_create, name='employe_create'),
     path('employes/<int:pk>/update/', views.employe_update, name='employe_update'),
     path('employes/<int:pk>/delete/', views.employe_delete, name='employe_delete'),
-]
 
+    path('appusers/', views.appuser_list, name='appuser_list'),
+    path('appusers/add/', views.appuser_create, name='appuser_create'),
+    path('appusers/<int:pk>/edit/', views.appuser_update, name='appuser_update'),
+    path('appusers/<int:pk>/delete/', views.appuser_delete, name='appuser_delete'),
+
+    # Authentication URLs
+    path('', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+
+    # Admin Dashboard
+    path('dashboard/', admin_dashboard, name='admin_dashboard'),
+
+    # Unauthorized
+    path('unauthorized/', unauthorized, name='unauthorized'),
+]

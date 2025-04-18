@@ -1,8 +1,15 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+
 from .models import (
     Article, Commande, Vente, Fournisseur,
     Client, Categorie, Employe, AppUser
 )
+
+# Custom AuthenticationForm with Bootstrap styling
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nom d\'utilisateur'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Mot de passe'}))
 
 class ArticleForm(forms.ModelForm):
     class Meta:
@@ -24,7 +31,7 @@ class CommandeForm(forms.ModelForm):
 class VenteForm(forms.ModelForm):
     class Meta:
         model = Vente
-        fields = '__all__'
+        fields = ['client','article','quantite','prix','date_vente']
         widgets = {
             'date_vente': forms.DateInput(attrs={'type': 'date'}),
         }
@@ -49,7 +56,7 @@ class EmployeForm(forms.ModelForm):
         model = Employe
         fields = '__all__'
 
-class AppUserForm(forms.ModelForm):
+class AppUserForm(UserCreationForm):
     class Meta:
         model = AppUser
-        fields = '__all__'
+        fields = ['username', 'email', 'first_name', 'last_name', 'telephone', 'cni', 'adresse', 'role']

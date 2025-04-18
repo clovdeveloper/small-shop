@@ -44,7 +44,29 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'vente_list' %}">Ventes</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'appuser_list' %}">Utilisateur</a>
+                </li>
 
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <span class="nav-link">Bonjour, {{ user.username }}</span>
+                </li>
+                {% if user.role == 'admin' %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin_dashboard' %}">Dashboard</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Connexion</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>

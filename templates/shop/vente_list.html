@@ -12,7 +12,7 @@
             <tr>
                 <td>{{ vente.client }}</td>
                 <td>{{ vente.article.nom_article }}</td>
-                <td>{{ vente.employe }}</td>
+                <td>{{ vente.employe.user.email }}</td>
                 <td>{{ vente.quantite }}</td>
                 <td>{{ vente.prix }}</td>
                 <td>{{ vente.date_vente|date:'Y-m-d' }}</td>

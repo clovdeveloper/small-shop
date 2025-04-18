@@ -2,9 +2,15 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class AppUser(AbstractUser):
+    ROLE_CHOICES = (
+        ('admin', 'Admin'),
+        ('employee', 'Employee'),
+        ('user', 'User'),
+    )
     telephone = models.CharField(max_length=15)
     cni = models.CharField(max_length=15)
     adresse = models.CharField(max_length=50)
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
 
 class Fournisseur(models.Model):
     nom = models.CharField(max_length=45)
